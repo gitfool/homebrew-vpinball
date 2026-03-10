@@ -16,7 +16,7 @@ brew tap gitfool/vpinball
 
 | Name | Description | Command |
 | --- | --- | --- |
-| [vpxtool](https://github.com/francisdb/vpxtool) | Terminal based frontend and utilities for Visual Pinball | `brew install vpxtool` |
+| [vpxtool](https://github.com/francisdb/vpxtool) | Terminal based frontend and utilities for Visual Pinball | `brew install --cask vpxtool` |
 
 ## How do I update these tools?
 
