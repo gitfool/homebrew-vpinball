@@ -17,9 +17,12 @@ brew tap gitfool/vpinball
 | Name | Description | Command |
 | --- | --- | --- |
 | [vpinball](https://github.com/vpinball/vpinball) | Visual Pinball BGFX<sup>1</sup> | `brew install --cask vpinball` |
+| [vpinball-nightly](https://nightly.link/vpinball/vpinball/workflows/vpinball/master?preview) | Visual Pinball BGFX<sup>1</sup> nightly<sup>2</sup> | `brew install --cask vpinball-nightly` |
 | [vpxtool](https://github.com/francisdb/vpxtool) | Terminal based frontend and utilities for Visual Pinball | `brew install --cask vpxtool` |
 
 <sup>1</sup> [BGFX](https://github.com/dekay/vpinball-wiki/wiki/About-Visual-Pinball#bgfx) x64 release only
+
+<sup>2</sup> Requires GitHub login
 
 ## How do I update these tools?
 
