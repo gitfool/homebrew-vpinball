@@ -2,10 +2,10 @@ cask "vpinball" do
   arch arm: "arm64", intel: "x64"
   os macos: "macos", linux: "linux"
 
-  version "10.8.1-3582-b9fc92d"
-  sha256 arm:          "a5ae694342b16d0afdcc3c0cb1eec06046ca655b439e5ddbdf42dcbf3e7d964a",
-         intel:        "2ae19871b0c8b8bdb1f1a1e49349fbb3a470d454de4b26257e274588bb262f8b",
-         x86_64_linux: "0622e6e7f04f081735027c510a5263815026212816e3fd1cf7e8166b25933a29"
+  version "10.8.1-3788-2151290"
+  sha256 arm:          "61557f85f94a8093c5add2c66f8d6978786666bb7e77b26866abe1cec406f303",
+         intel:        "3bcc61cfd4c73423de7aa641023c75bd4db0b34f2a67dc4617315c49066a762b",
+         x86_64_linux: "4b08c536b668dd15ed096528d882d8af39c1fe8c10023e23f87d6c9e4f596cd7"
 
   url "https://github.com/vpinball/vpinball/releases/download/v#{version}/VPinballX_BGFX-#{version}-#{os}-#{arch}-Release.zip"
   name "VPinballX BGFX"
