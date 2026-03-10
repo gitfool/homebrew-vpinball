@@ -23,6 +23,10 @@ cask "vpinball-nightly" do
   on_macos do
     app "VPinballX_BGFX.app"
     binary "#{appdir}/VPinballX_BGFX.app/Contents/MacOS/VPinballX_BGFX"
+
+    postflight do
+      system_command "xattr", args: ["-d", "com.apple.quarantine", "#{appdir}/VPinballX_BGFX.app"]
+    end
   end
 
   on_linux do

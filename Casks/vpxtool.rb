@@ -22,6 +22,12 @@ cask "vpxtool" do
 
   binary "vpxtool"
 
+  on_macos do
+    postflight do
+      system_command "xattr", args: ["-d", "com.apple.quarantine", "#{HOMEBREW_PREFIX}/bin/vpxtool"]
+    end
+  end
+
   zap trash: [
     "~/.config/vpxtool",
     "~/Library/Application Support/vpxtool",
