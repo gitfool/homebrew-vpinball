@@ -2,10 +2,10 @@ cask "vpinball-nightly" do
   arch arm: "arm64", intel: "x64"
   os macos: "macos", linux: "linux"
 
-  version "10.8.1-4783-9a90d8d"
-  sha256 arm:          "6ed6995acbff49310c6d4c12de5dad5b63e438e3d949d978d59c7d849e97c030",
-         intel:        "ee3e107e6500ced364449cde60305abad85e8fe69006637429503a6d2c3c6196",
-         x86_64_linux: "57f437f78ae2ada440b044021c05b8109614f718c44f04e098e123942a5858f6"
+  version "10.8.1-4786-ee57db5"
+  sha256 arm:          "5c7c6509b21db33c9f433e516f21b69e104002de58a03168df05aeb0889d8164",
+         intel:        "3d0d636682a6d3c54f1322aa84c4e9ae4d7b4fc775e5ab91abdef71434f8bb27",
+         x86_64_linux: "cbfc325abc0b6607a4cda0f191177c5e5b76d26bcabf5d466b1b78619b835721"
 
   url "https://nightly.link/vpinball/vpinball/workflows/vpinball/master/VPinballX_BGFX-#{version}-#{os}-#{arch}-Release.zip",
       verified: "nightly.link/vpinball/vpinball/"
