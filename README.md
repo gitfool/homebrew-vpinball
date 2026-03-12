@@ -20,12 +20,16 @@ brew tap gitfool/vpinball
 | Name | Description | Command | Version |
 | --- | --- | --- | --- |
 | [vpinball](https://github.com/vpinball/vpinball) | Visual Pinball BGFX<sup>1</sup> | `brew install vpinball` | [![Version](https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgitfool%2Fhomebrew-vpinball%2Frefs%2Fheads%2Fmain%2FCasks%2Fvpinball.rb&search=version%20%22(.%2B)%22&replace=v%241&label=&logo=homebrew)](Casks/vpinball.rb) |
-| [vpinball-nightly](https://nightly.link/vpinball/vpinball/workflows/vpinball/master?preview) | Visual Pinball BGFX<sup>1</sup> nightly<sup>2</sup> | `brew install vpinball-nightly` | [![Version](https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgitfool%2Fhomebrew-vpinball%2Frefs%2Fheads%2Fmain%2FCasks%2Fvpinball-nightly.rb&search=version%20%22(.%2B)%22&replace=v%241&label=&logo=homebrew)](Casks/vpinball-nightly.rb) |
+| [vpinball-nightly](https://nightly.link/vpinball/vpinball/workflows/vpinball/master?preview) | Visual Pinball BGFX<sup>1</sup> (nightly<sup>2</sup>) | `brew install vpinball-nightly` | [![Version](https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgitfool%2Fhomebrew-vpinball%2Frefs%2Fheads%2Fmain%2FCasks%2Fvpinball-nightly.rb&search=version%20%22(.%2B)%22&replace=v%241&label=&logo=homebrew)](Casks/vpinball-nightly.rb) |
+| [vpinfe](https://github.com/superhac/vpinfe) | A vpinball frontend for Linux, Mac, and Windows | `brew install vpinfe` | [![Version](https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgitfool%2Fhomebrew-vpinball%2Frefs%2Fheads%2Fmain%2FCasks%2Fvpinfe.rb&search=version%20%22(.%2B)%22&replace=v%241&label=&logo=homebrew)](Casks/vpinfe.rb) |
+| [vpinfe-slim](https://github.com/superhac/vpinfe) | A vpinball frontend for Linux, Mac, and Windows (slim<sup>3</sup>) | `brew install vpinfe-slim` | [![Version](https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgitfool%2Fhomebrew-vpinball%2Frefs%2Fheads%2Fmain%2FCasks%2Fvpinfe-slim.rb&search=version%20%22(.%2B)%22&replace=v%241&label=&logo=homebrew)](Casks/vpinfe-slim.rb) |
 | [vpxtool](https://github.com/francisdb/vpxtool) | Terminal based frontend and utilities for Visual Pinball | `brew install vpxtool` | [![Version](https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgitfool%2Fhomebrew-vpinball%2Frefs%2Fheads%2Fmain%2FCasks%2Fvpxtool.rb&search=version%20%22(.%2B)%22&replace=v%241&label=&logo=homebrew)](Casks/vpxtool.rb) |
 
 <sup>1</sup> [BGFX](https://github.com/dekay/vpinball-wiki/wiki/About-Visual-Pinball#bgfx) x64 release only
 
-<sup>2</sup> Requires GitHub login
+<sup>2</sup> Requires [GitHub](https://github.com) login
+
+<sup>3</sup> Requires [Chrome](https://www.google.com/chrome) browser
 
 ## How do I update apps?
 
