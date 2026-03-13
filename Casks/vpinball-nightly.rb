@@ -2,7 +2,7 @@ cask "vpinball-nightly" do
   arch arm: "arm64", intel: "x64"
   os macos: "macos", linux: "linux"
 
-  ext = on_system_conditional macos: "dmg", linux: "zip"
+  ext = on_system_conditional macos: "dmg", linux: "tar.gz"
 
   version "10.8.1-4787-eb9f66e"
   sha256 arm:          "81f6d9f0855e94be6d2b58bda714ab94b890f75e03efd107485073de2e53d561",
@@ -17,7 +17,7 @@ cask "vpinball-nightly" do
 
   livecheck do
     url "https://nightly.link/vpinball/vpinball/workflows/vpinball/master?preview"
-    regex(/VPinballX_BGFX-(.+?)-#{os}-#{arch}-Release.zip"/)
+    regex(/VPinballX_BGFX-(.+?)-#{os}-#{arch}-Release.#{ext}"/)
   end
 
   depends_on macos: ">= :sonoma"
