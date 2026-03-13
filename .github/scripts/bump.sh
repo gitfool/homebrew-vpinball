@@ -31,8 +31,8 @@ jq --compact-output '.[]' <<<"$items" | while IFS= read -r item; do
     outdated=$(jq -r '.version.outdated' <<<"$item")
     newer=$(jq -r '.version.newer_than_upstream' <<<"$item")
 
-    if [ "$status" == "skipped" ]; then
-        echo -e "${RED}${name}: $(jq -r '.messages[0]' <<<"$item")${RESET}"
+    if [ "$status" == "error" ] || [ "$status" == "skipped" ]; then
+        echo -e "${RED}${name}: $(jq -r '.messages[0] // .status' <<<"$item")${RESET}"
         continue
     elif [ "$latest" == "null" ]; then
         echo -e "${RED}${name}: latest is null${RESET}"
