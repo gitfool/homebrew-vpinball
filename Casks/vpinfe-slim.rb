@@ -7,8 +7,8 @@ cask "vpinfe-slim" do
          x86_64_linux: "ac3e6be60e66de36af74c7d9a3abc2cafdb51fc8e359fc5e7f43db998a9ff329"
 
   url "https://github.com/superhac/vpinfe/releases/download/v#{version}/vpinfe-v#{version}-#{os}-#{arch}-slim.zip"
-  name "VPinFE"
-  desc "A vpinball frontend for Linux, Mac, and Windows"
+  name "VPinFE (slim)"
+  desc "A vpinball frontend for Linux, Mac, and Windows (slim)"
   homepage "https://github.com/superhac/vpinfe"
 
   livecheck do

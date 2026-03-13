@@ -9,8 +9,8 @@ cask "vpinball-nightly" do
 
   url "https://nightly.link/vpinball/vpinball/workflows/vpinball/master/VPinballX_BGFX-#{version}-#{os}-#{arch}-Release.zip",
       verified: "nightly.link/vpinball/vpinball/"
-  name "VPinballX BGFX nightly"
-  desc "Visual Pinball BGFX nightly"
+  name "VPinballX BGFX (nightly)"
+  desc "Visual Pinball BGFX (nightly)"
   homepage "https://github.com/vpinball/vpinball"
 
   livecheck do
