@@ -38,7 +38,7 @@ cask "vpinfe" do
   end
 
   on_linux do
-    binary "vpinfe"
+    binary "vpinfe/vpinfe"
   end
 
   zap trash: [
