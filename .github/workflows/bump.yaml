@@ -20,10 +20,14 @@ env:
 
 jobs:
   test:
-    runs-on: ubuntu-24.04
-    container: ghcr.io/homebrew/ubuntu24.04:main
-    env:
-      HOMEBREW_SIMULATE_MACOS_ON_LINUX: 1
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - macos-26
+          - macos-26-intel
+          - ubuntu-24.04
+          - ubuntu-24.04-arm
     steps:
       - name: Install homebrew
         uses: Homebrew/actions/setup-homebrew@main
@@ -31,9 +35,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check syntax
-        env:
-          HOMEBREW_DEBUG: 1
-          HOMEBREW_VERBOSE: 1
         run: brew test-bot --only-tap-syntax
 
   bump:
