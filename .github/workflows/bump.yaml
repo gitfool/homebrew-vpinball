@@ -32,6 +32,7 @@ jobs:
 
       - name: Check syntax
         env:
+          HOMEBREW_DEBUG: 1
           HOMEBREW_VERBOSE: 1
         run: brew test-bot --only-tap-syntax
 
