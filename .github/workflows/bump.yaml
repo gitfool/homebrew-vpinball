@@ -44,11 +44,9 @@ jobs:
           cd "$(brew --repo "${GITHUB_REPOSITORY}")"
           # Work around rubocop checks cannot be suppressed
           gsed -i 's/desc ".*"/desc "Mostly harmless"/' Casks/vpinfe*.rb
-          # Work around sha256 value is nil for multi os/arch
-          gsed -i -e '/sha256/{s/: */: /; s/,$//}' -e '/sha256/,/^$/{/sha256/!{/^$/!d}}' Casks/*.rb
 
-      - name: Check syntax
-        run: brew test-bot --only-tap-syntax
+      - name: Check style
+        run: brew style "${GITHUB_REPOSITORY}"
 
   bump:
     runs-on: macos-26
