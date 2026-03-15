@@ -43,7 +43,7 @@ jobs:
           restore-keys: ${{ runner.os }}-test-gems-
 
       - name: Install gems
-        run: brew install-bundler-gems --groups style
+        run: brew install-bundler-gems --groups audit,style
 
       - name: Hack tests
         run: |
@@ -54,7 +54,15 @@ jobs:
           gsed -i 's/desc ".*"/desc "Mostly harmless"/' Casks/vpinfe*.rb
 
       - name: Check style
-        run: brew style "${GITHUB_REPOSITORY}"
+        run: |
+          set -eux
+          brew style "${GITHUB_REPOSITORY}"
+
+      - name: Check audit
+        run: |
+          set -eux
+          brew readall --os=sonoma --arch=arm --aliases "${GITHUB_REPOSITORY}"
+          brew audit --skip-style --except=version --tap="${GITHUB_REPOSITORY}"
 
   bump:
     runs-on: macos-26
