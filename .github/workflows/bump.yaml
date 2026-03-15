@@ -30,12 +30,20 @@ jobs:
           show-progress: false
 
       - name: Install homebrew
+        id: homebrew
         uses: Homebrew/actions/setup-homebrew@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Cache gems
+        uses: actions/cache@v5.0.3
+        with:
+          path: ${{ steps.homebrew.outputs.gems-path }}
+          key: ${{ runner.os }}-test-gems-${{ steps.homebrew.outputs.gems-hash }}
+          restore-keys: ${{ runner.os }}-test-gems-
+
       - name: Install gems
-        run: brew install-bundler-gems --groups audit,style
+        run: brew install-bundler-gems --groups style
 
       - name: Hack tests
         run: |
@@ -59,12 +67,17 @@ jobs:
           show-progress: false
 
       - name: Install homebrew
+        id: homebrew
         uses: Homebrew/actions/setup-homebrew@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install gems
-        run: brew install-bundler-gems --groups audit,style
+      - name: Cache gems
+        uses: actions/cache@v5.0.3
+        with:
+          path: ${{ steps.homebrew.outputs.gems-path }}
+          key: ${{ runner.os }}-bump-gems-${{ steps.homebrew.outputs.gems-hash }}
+          restore-keys: ${{ runner.os }}-bump-gems-
 
       - name: Bump versions
         env:
