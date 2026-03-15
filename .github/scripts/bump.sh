@@ -47,13 +47,13 @@ jq --compact-output '.[]' <<<"$items" | while IFS= read -r item; do
 
     echo -e "${BLUE}Bumping ${name} from ${current} to ${latest}...${RESET}"
     if [ "$kind" == "cask" ]; then
-        if ! brew bump-cask-pr --write-only --no-audit "$name" --version "$latest" --verbose; then
+        if ! brew bump-cask-pr --write-only --no-audit --no-style "$name" --version "$latest" --verbose; then
             echo -e "${RED}${name}: bump-cask-pr failed${RESET}"
             continue
         fi
         path="$(brew edit --cask "$name" --print-path)"
     else
-        if ! brew bump-formula-pr --write-only --no-audit "$name" --version "$latest" --verbose; then
+        if ! brew bump-formula-pr --write-only --no-audit --no-style "$name" --version "$latest" --verbose; then
             echo -e "${RED}${name}: bump-formula-pr failed${RESET}"
             continue
         fi
