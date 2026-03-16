@@ -46,10 +46,7 @@ jobs:
         run: brew install-bundler-gems --groups audit,style
 
       - name: Install formulas
-        uses: Homebrew/actions/cache-homebrew-prefix@main
-        with:
-          install: actionlint gnu-sed shellcheck
-          uninstall: true
+        run: brew install actionlint gnu-sed shellcheck
 
       - name: Hack tests
         run: |
