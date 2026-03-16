@@ -45,10 +45,15 @@ jobs:
       - name: Install gems
         run: brew install-bundler-gems --groups audit,style
 
+      - name: Install formulas
+        uses: Homebrew/actions/cache-homebrew-prefix@main
+        with:
+          install: actionlint gnu-sed shellcheck
+          uninstall: true
+
       - name: Hack tests
         run: |
           set -eux
-          brew install gnu-sed
           cd "$(brew --repo "${GITHUB_REPOSITORY}")"
           # Work around rubocop checks cannot be suppressed
           gsed -i 's/desc ".*"/desc "Mostly harmless"/' Casks/vpinfe*.rb
