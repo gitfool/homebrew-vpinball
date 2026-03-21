@@ -1,8 +1,8 @@
 name: bump
 on:
   schedule:
-    # run every midnight gmt
-    - cron: "0 0 * * *"
+    # run every 12 hours
+    - cron: "0 */12 * * *"
   workflow_dispatch:
 
 concurrency:
