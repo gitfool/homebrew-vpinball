@@ -1,5 +1,5 @@
 cask "pinready" do
-  arch arm: (OS.mac? ? "arm64" : "aarch64"), intel: "x86_64"
+  arch arm: "aarch64", intel: "x86_64"
   os macos: "macos", linux: "linux"
 
   version "0.5.6"
