@@ -2,10 +2,10 @@ cask "vpinfe-slim" do
   arch arm: "arm64", intel: "x64"
   os macos: "macos", linux: "linux"
 
-  version "1.1.73"
-  sha256 arm:          "d8342afc42d7f70e2d92a71af9581820b095a3116f8db0da8a19046384d0c17d",
-         arm64_linux:  "ecfe9f43063d80e36e80b8c4384b0255bcc0a07744ca7d7e82c0e8e5a05fece9",
-         x86_64_linux: "8ac39b834021bd0f30934eee93c18b928edd57a08f484493b20e311766a8d97b"
+  version "1.1.74"
+  sha256 arm:          "a3eda34c8b34ec59b0e25426b594061b41e2a9dd551d4e82936c8b3accebd696",
+         arm64_linux:  "7385151f1833c50388abaa100f551e7c57b011efac19a28b9e40bdd19723025d",
+         x86_64_linux: "fd6d47b2821b7159604b8f2fb69c58ea3f0febfe5d0280f9507b503495c2a42f"
 
   url "https://github.com/superhac/vpinfe/releases/download/v#{version}/vpinfe-v#{version}-#{os}-#{arch}-slim.zip"
   name "VPinFE (slim)"
