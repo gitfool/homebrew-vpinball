@@ -2,11 +2,11 @@ cask "vpxtool" do
   arch arm: "aarch64", intel: "x86_64"
   os macos: "macos", linux: "linux"
 
-  version "0.29.3"
-  sha256 arm:          "8bb7a4eb71f1715bc5e253f1688398a973a772c18d584cefde0449a9fac488f1",
-         intel:        "feb95f0db7c592f1797b07743c7d733827e07ffec0304d9b450580bc43ef9251",
-         arm64_linux:  "be9c47a2b3d212ad3020635a1b1f32aa05382613430eb80367ad0e33110f6b85",
-         x86_64_linux: "4d92e8cdcf72ca17c84e566124f425e31312935c7b84d022d13ec01871c4addc"
+  version "0.30.0"
+  sha256 arm:          "18bca7536f640f1aabd67d46d557a76fbbad86c0ee980a980820b21132a31b42",
+         intel:        "4d4a15745adae68e1331d25805e8f7b1cad22e861af3f9d9e8eccb80c7ff929b",
+         arm64_linux:  "3987e32681fc18a806eb465d94b63ae4ee261d4acd5807729f5bcf1b829b4618",
+         x86_64_linux: "6e302f9b3aaff61ef0a3c17c2c58ec9b1b8fd763c96b137c812922475c702514"
 
   url "https://github.com/francisdb/vpxtool/releases/download/v#{version}/vpxtool-#{os}-#{arch}-v#{version}.tar.gz"
   name "vpxtool"
