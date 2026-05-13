@@ -27,7 +27,7 @@ cask "vpinfe-slim" do
     end
   end
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   on_macos do
     app "VPinFE.app"

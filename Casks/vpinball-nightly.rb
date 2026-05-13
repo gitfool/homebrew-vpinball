@@ -20,7 +20,7 @@ cask "vpinball-nightly" do
     regex(/VPinballX_BGFX-(.+?)-#{os}-#{arch}-Release.#{ext}"/)
   end
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   on_macos do
     app "VPinballX_BGFX.app"
