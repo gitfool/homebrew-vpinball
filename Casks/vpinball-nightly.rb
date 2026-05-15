@@ -4,7 +4,7 @@ cask "vpinball-nightly" do
 
   ext = on_system_conditional macos: "dmg", linux: "tar.gz"
 
-  version "10.8.1-4787-eb9f66e"
+  version "10.8.1-5072-4f79d47"
   sha256 arm:          "81f6d9f0855e94be6d2b58bda714ab94b890f75e03efd107485073de2e53d561",
          intel:        "1f9a7341ee3c43548c20822436bfdb6a75e3b0bc332d82d91e1fd6de55af67e9",
          x86_64_linux: "863b47e29bd976ef1c2d7431d67f0f281facee7959de32928b5950c22a5c650c"
