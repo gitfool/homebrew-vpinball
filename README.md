@@ -13,6 +13,7 @@
 * Add brew [tap](https://docs.brew.sh/Taps):
 ```sh
 brew tap gitfool/vpinball
+brew trust gitfool/vpinball
 ```
 
 * Install apps via brew [cli](https://docs.brew.sh/Manpage):
