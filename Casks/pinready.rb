@@ -2,11 +2,11 @@ cask "pinready" do
   arch arm: "aarch64", intel: "x86_64"
   os macos: "macos", linux: "linux"
 
-  version "0.13.10"
-  sha256 arm:          "ba3a523aeee92fa646fd3ad05b6f18ee6cd1edd39bcb0ce03b57a4deea2eb995",
-         intel:        "6e5031be28c6721153df7b36e54a87c05ba30c47f7bda62999f6278a961df1ee",
-         arm64_linux:  "aa746e76474f5fce5b2d49253fd82d6c5b2ac26f0e94ce60524a7b79f9f8b4aa",
-         x86_64_linux: "12e458c219c5aa04a0bb188011773865e257ef9fdae553667e1dfcb3864bd344"
+  version "0.14.0"
+  sha256 arm:          "af483a2525eeba04cf53423764ed0538095d7a768276f51ca2ed9fa292b42cbc",
+         intel:        "24924bcd734e33f79896687f7a04049eb2f1e406c61d4661abab3a9e26e06a8d",
+         arm64_linux:  "5bff244ab4b678ac7be64d12b45688ef5883d0c3e9d9b57b970bffb195c6cf99",
+         x86_64_linux: "4f2eaed7f0c5b48129af0eb222e5903e1269cfb7abd9d1645e7e2ff97bdfd068"
 
   url "https://github.com/Le-Syl21/PinReady/releases/download/v#{version}/pinready-#{os}-#{arch}.tar.gz"
   name "pinready"
