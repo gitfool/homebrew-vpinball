@@ -8,6 +8,12 @@ cask "pinready" do
          arm64_linux:  "aa30f39b6040f30297ce7790ecb9025c3668fb9d9a12ea5b471b763d0eada08d",
          x86_64_linux: "a2dee701e8de05c4ad24a4addeb22c7192c1e0fcec28af78ce6dd9db9a92e141"
 
+  on_macos do
+    postflight do
+      system_command "xattr", args: ["-d", "com.apple.quarantine", "#{HOMEBREW_PREFIX}/bin/pinready"]
+    end
+  end
+
   url "https://github.com/Le-Syl21/PinReady/releases/download/v#{version}/pinready-#{os}-#{arch}.tar.gz"
   name "pinready"
   desc "Cross-platform configurator and launcher for Visual Pinball"
@@ -19,12 +25,6 @@ cask "pinready" do
   end
 
   binary "pinready"
-
-  on_macos do
-    postflight do
-      system_command "xattr", args: ["-d", "com.apple.quarantine", "#{HOMEBREW_PREFIX}/bin/pinready"]
-    end
-  end
 
   zap trash: [
     "~/.local/share/pinready",

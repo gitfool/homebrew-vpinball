@@ -7,6 +7,20 @@ cask "vpinfe" do
          arm64_linux:  "a4f40ade01cb620bcba5135f99a54f53875c93809856a1421854a26d78b9c75a",
          x86_64_linux: "9e362deabd961d3ce5efbc7cff198ce2b0a9858c20d89f3d0d5d00b1f68f9af3"
 
+  on_macos do
+    depends_on macos: :sonoma
+
+    app "VPinFE.app"
+    binary "#{appdir}/VPinFE.app/Contents/MacOS/VPinFE", target: "vpinfe"
+
+    postflight do
+      system_command "xattr", args: ["-d", "com.apple.quarantine", "#{appdir}/VPinFE.app"]
+    end
+  end
+  on_linux do
+    binary "vpinfe/vpinfe"
+  end
+
   url "https://github.com/superhac/vpinfe/releases/download/v#{version}/vpinfe-v#{version}-#{os}-#{arch}.zip"
   name "VPinFE"
   desc "A vpinball frontend for Linux, Mac, and Windows"
@@ -25,21 +39,6 @@ cask "vpinfe" do
         match[1]
       end
     end
-  end
-
-  depends_on macos: :sonoma
-
-  on_macos do
-    app "VPinFE.app"
-    binary "#{appdir}/VPinFE.app/Contents/MacOS/VPinFE", target: "vpinfe"
-
-    postflight do
-      system_command "xattr", args: ["-d", "com.apple.quarantine", "#{appdir}/VPinFE.app"]
-    end
-  end
-
-  on_linux do
-    binary "vpinfe/vpinfe"
   end
 
   zap trash: [

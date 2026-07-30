@@ -7,6 +7,20 @@ cask "vpinball" do
          intel:        "3bcc61cfd4c73423de7aa641023c75bd4db0b34f2a67dc4617315c49066a762b",
          x86_64_linux: "4b08c536b668dd15ed096528d882d8af39c1fe8c10023e23f87d6c9e4f596cd7"
 
+  on_macos do
+    depends_on macos: :sonoma
+
+    app "VPinballX_BGFX.app"
+    binary "#{appdir}/VPinballX_BGFX.app/Contents/MacOS/VPinballX_BGFX"
+
+    postflight do
+      system_command "xattr", args: ["-d", "com.apple.quarantine", "#{appdir}/VPinballX_BGFX.app"]
+    end
+  end
+  on_linux do
+    binary "VPinballX_BGFX"
+  end
+
   url "https://github.com/vpinball/vpinball/releases/download/v#{version}/VPinballX_BGFX-#{version}-#{os}-#{arch}-Release.zip"
   name "VPinballX BGFX"
   desc "Visual Pinball BGFX"
@@ -25,21 +39,6 @@ cask "vpinball" do
         match[1]
       end
     end
-  end
-
-  depends_on macos: :sonoma
-
-  on_macos do
-    app "VPinballX_BGFX.app"
-    binary "#{appdir}/VPinballX_BGFX.app/Contents/MacOS/VPinballX_BGFX"
-
-    postflight do
-      system_command "xattr", args: ["-d", "com.apple.quarantine", "#{appdir}/VPinballX_BGFX.app"]
-    end
-  end
-
-  on_linux do
-    binary "VPinballX_BGFX"
   end
 
   zap trash: [
