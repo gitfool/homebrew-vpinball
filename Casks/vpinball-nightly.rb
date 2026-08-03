@@ -2,6 +2,8 @@ cask "vpinball-nightly" do
   arch arm: "arm64", intel: "x64"
   os macos: "macos", linux: "linux"
   ext = on_system_conditional macos: "dmg", linux: "tar.gz"
+  artifact_id = on_system_conditional macos: on_arch_conditional(arm: "expired", intel: "expired"),
+                                      linux: "expired"
 
   version "10.8.1-4787-eb9f66e"
   sha256 arm:          "81f6d9f0855e94be6d2b58bda714ab94b890f75e03efd107485073de2e53d561",
@@ -22,15 +24,15 @@ cask "vpinball-nightly" do
     binary "VPinballX_BGFX"
   end
 
-  url "https://nightly.link/vpinball/vpinball/workflows/vpinball/master/VPinballX_BGFX-#{version}-#{os}-#{arch}-Release.#{ext}",
-      verified: "nightly.link/vpinball/vpinball/"
+  url "https://api.github.com/repos/vpinball/vpinball/actions/artifacts/#{artifact_id}/zip",
+      header: "Authorization: token #{GitHub::API.credentials}"
   name "VPinballX BGFX (nightly)"
   desc "Visual Pinball BGFX (nightly)"
   homepage "https://github.com/vpinball/vpinball"
 
   livecheck do
     url "https://nightly.link/vpinball/vpinball/workflows/vpinball/master?preview"
-    regex(/VPinballX_BGFX-(.+?)-#{os}-#{arch}-Release.#{ext}"/)
+    regex(/VPinballX_BGFX-(.+?)-#{os}-#{arch}-Release\.#{ext}"/)
   end
 
   zap trash: [

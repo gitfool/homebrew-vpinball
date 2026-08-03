@@ -90,7 +90,11 @@ jobs:
           key: ${{ runner.os }}-bump-gems-${{ steps.homebrew.outputs.gems-hash }}
           restore-keys: ${{ runner.os }}-bump-gems-
 
+      - name: Install formulas
+        run: brew install gnu-sed
+
       - name: Bump versions
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./.github/scripts/bump.sh
