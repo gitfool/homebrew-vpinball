@@ -8,6 +8,7 @@ cask "vpinfe-slim" do
          x86_64_linux: "f6ee33ff7af280979df218e214445892b835010df7d77f923bd5b9ce0038fdc7"
 
   on_macos do
+    depends_on arch: :arm64
     depends_on macos: :sonoma
 
     app "VPinFE.app"
