@@ -21,6 +21,8 @@ cask "vpinball-nightly" do
     end
   end
   on_linux do
+    depends_on arch: :x86_64
+
     binary "VPinballX_BGFX"
   end
 
