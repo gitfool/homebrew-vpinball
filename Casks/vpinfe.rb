@@ -2,10 +2,10 @@ cask "vpinfe" do
   arch arm: "arm64", intel: "x64"
   os macos: "macos", linux: "linux"
 
-  version "2.6.0"
-  sha256 arm:          "a91c00b1f4fd3a6771250136f8996ebb850f5552f1d5935a3c09d64209c49ed3",
-         arm64_linux:  "9591ebfb6679b5b98ccc99b329afa52836aa65d38d219bb22998d2ea5166433c",
-         x86_64_linux: "470c7dcf8740b7f5eaeaf06edd4e0efe886721a3cc9eb3dac8b6761211d22c1b"
+  version "2.6.1"
+  sha256 arm:          "c89fbd75732683aeea28701819df95cd3cd7aca447f15c9a6a10052df30d705f",
+         arm64_linux:  "edee91733c70ceebb1c36b0ece90c3c0d734c5b8ae3f349b9c9ffb39f52e5270",
+         x86_64_linux: "2a807aab08e9e3e02365a0869efc162878be402c7c156fbaef90a5fbfa76b397"
 
   on_macos do
     depends_on arch: :arm64
