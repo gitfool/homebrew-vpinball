@@ -1,5 +1,5 @@
 cask "pinone-config-tool" do
-  arch arm: "-arm64", intel: ""
+  arch arm: "-arm64"
   ext = on_system_conditional macos: "dmg", linux: "AppImage"
 
   version "2.2.2"
@@ -30,7 +30,5 @@ cask "pinone-config-tool" do
     strategy :github_latest
   end
 
-  zap trash: [
-    "~/Library/Application Support/pinone-config-tool",
-  ]
+  zap trash: "~/Library/Application Support/pinone-config-tool"
 end
