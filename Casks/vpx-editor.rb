@@ -20,7 +20,7 @@ cask "vpx-editor" do
   on_linux do
     depends_on arch: :x86_64
 
-    binary "vpx-editor"
+    binary "VPX Editor-linux-x64/vpx-editor"
   end
 
   url "https://github.com/jsm174/vpx-editor/releases/download/v#{version.split("-").first}/vpx-editor-#{os}-#{arch}-#{version}.#{ext}"
@@ -46,7 +46,7 @@ cask "vpx-editor" do
   end
 
   zap trash: [
-    "~/.config/vpx-editor",
-    "~/Library/Application Support/vpx-editor",
+    "~/.config/VPX Editor",
+    "~/Library/Application Support/VPX Editor",
   ]
 end
