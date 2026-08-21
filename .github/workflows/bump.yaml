@@ -22,6 +22,11 @@ env:
 jobs:
   test:
     runs-on: macos-26
+
+    defaults:
+      run:
+        shell: /opt/homebrew/bin/bash --noprofile --norc -eo pipefail {0}
+
     steps:
       - name: Checkout source
         uses: actions/checkout@v6.0.2
@@ -44,10 +49,12 @@ jobs:
           restore-keys: ${{ runner.os }}-test-gems-
 
       - name: Install gems
+        shell: bash
         run: brew install-bundler-gems --groups audit,style
 
       - name: Install formulas
-        run: brew install actionlint gnu-sed shellcheck
+        shell: bash
+        run: brew install actionlint bash gnu-sed shellcheck
 
       - name: Hack tests
         run: |
@@ -69,6 +76,11 @@ jobs:
 
   bump:
     runs-on: macos-26
+
+    defaults:
+      run:
+        shell: /opt/homebrew/bin/bash --noprofile --norc -eo pipefail {0}
+
     steps:
       - name: Checkout source
         uses: actions/checkout@v6.0.2
@@ -91,7 +103,8 @@ jobs:
           restore-keys: ${{ runner.os }}-bump-gems-
 
       - name: Install formulas
-        run: brew install gnu-sed
+        shell: bash
+        run: brew install bash gnu-sed
 
       - name: Bump versions
         env:
