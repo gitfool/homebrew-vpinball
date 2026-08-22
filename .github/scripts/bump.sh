@@ -35,18 +35,18 @@ bump_nightly() {
 
     # Parse arch values from the cask: arch arm: "...", intel: "..."
     local arch_arm arch_intel
-    arch_arm=$(gsed -n 's/.*arch.*arm: "\([^"]*\)".*/\1/p' "$path")
-    arch_intel=$(gsed -n 's/.*arch.*intel: "\([^"]*\)".*/\1/p' "$path")
+    arch_arm=$(gsed -n 's/^  arch.*arm: "\([^"]*\)".*/\1/p' "$path")
+    arch_intel=$(gsed -n 's/^  arch.*intel: "\([^"]*\)".*/\1/p' "$path")
 
     # Parse os values from the cask: os macos: "...", linux: "..."
     local os_macos os_linux
-    os_macos=$(gsed -n 's/.*\bos\b.*macos: "\([^"]*\)".*/\1/p' "$path")
-    os_linux=$(gsed -n 's/.*\bos\b.*linux: "\([^"]*\)".*/\1/p' "$path")
+    os_macos=$(gsed -n 's/^  os.*macos: "\([^"]*\)".*/\1/p' "$path")
+    os_linux=$(gsed -n 's/^  os.*linux: "\([^"]*\)".*/\1/p' "$path")
 
-    # Parse ext values from the cask: on_system_conditional macos: "...", linux: "..."
+    # Parse ext values from the cask: ext = on_system_conditional macos: "...", linux: "..."
     local ext_macos ext_linux
-    ext_macos=$(gsed -n 's/.*on_system_conditional.*macos: "\([^"]*\)".*/\1/p' "$path")
-    ext_linux=$(gsed -n 's/.*on_system_conditional.*linux: "\([^"]*\)".*/\1/p' "$path")
+    ext_macos=$(gsed -n 's/^  ext.*macos: "\([^"]*\)".*/\1/p' "$path")
+    ext_linux=$(gsed -n 's/^  ext.*linux: "\([^"]*\)".*/\1/p' "$path")
 
     # Derive architecture keys from sha256 hash entries in the cask
     local -a keys=()
