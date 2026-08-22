@@ -1,6 +1,7 @@
 cask "vpinball" do
   arch arm: "arm64", intel: "x64"
   os macos: "macos", linux: "linux"
+  ext = on_system_conditional macos: "dmg", linux: "tar.gz"
 
   version "10.8.1-3788-2151290"
   sha256 arm:          "61557f85f94a8093c5add2c66f8d6978786666bb7e77b26866abe1cec406f303",
@@ -23,7 +24,7 @@ cask "vpinball" do
     binary "VPinballX_BGFX"
   end
 
-  url "https://github.com/vpinball/vpinball/releases/download/v#{version}/VPinballX_BGFX-#{version}-#{os}-#{arch}-Release.zip"
+  url "https://github.com/vpinball/vpinball/releases/download/v#{version}/VPinballX_BGFX-#{version}-#{os}-#{arch}-Release.#{ext}"
   name "VPinballX BGFX"
   desc "Visual Pinball BGFX"
   homepage "https://github.com/vpinball/vpinball"
