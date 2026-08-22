@@ -30,7 +30,7 @@ cask "vpinball" do
 
   livecheck do
     url :url
-    regex(/^v?(\d+\.\d+\.\d+-\d+-[0-9a-f]{7})$/)
+    regex(/^v?(\d+\.\d+\.\d+-\d+-[0-9a-f]+)$/)
     strategy :github_releases do |json, regex|
       json.map do |release|
         next if release["draft"]

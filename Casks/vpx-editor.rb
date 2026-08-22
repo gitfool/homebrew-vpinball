@@ -30,7 +30,7 @@ cask "vpx-editor" do
 
   livecheck do
     url :url
-    regex(/vpx-editor-#{os}-#{arch}-(\d+(?:\.\d+)+-\d+-[0-9a-f]{7})\.#{ext}/i)
+    regex(/vpx-editor-#{os}-#{arch}-(\d+(?:\.\d+)+-\d+-[0-9a-f]+)\.#{ext}/i)
     strategy :github_releases do |json, regex|
       json.map do |release|
         next if release["draft"]
