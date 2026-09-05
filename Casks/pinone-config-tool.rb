@@ -10,8 +10,8 @@ cask "pinone-config-tool" do
   on_macos do
     app "pinone-config-tool.app"
 
-    postflight do
-      system_command "xattr", args: ["-d", "com.apple.quarantine", "#{appdir}/pinone-config-tool.app"]
+    postflight_steps do
+      run "xattr", args: ["-d", "com.apple.quarantine", "{{appdir}}/pinone-config-tool.app"]
     end
   end
   on_linux do

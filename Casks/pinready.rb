@@ -9,8 +9,8 @@ cask "pinready" do
          x86_64_linux: "3741e6a8473ad53262036ab9382f9cb6312499ffdb42c91c573a8ece90ac50bd"
 
   on_macos do
-    postflight do
-      system_command "xattr", args: ["-d", "com.apple.quarantine", "#{HOMEBREW_PREFIX}/bin/pinready"]
+    postflight_steps do
+      run "xattr", args: ["-d", "com.apple.quarantine", "{{HOMEBREW_PREFIX}}/bin/pinready"]
     end
   end
 

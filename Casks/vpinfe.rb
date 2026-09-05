@@ -14,8 +14,8 @@ cask "vpinfe" do
     app "VPinFE.app"
     binary "#{appdir}/VPinFE.app/Contents/MacOS/VPinFE", target: "vpinfe"
 
-    postflight do
-      system_command "xattr", args: ["-d", "com.apple.quarantine", "#{appdir}/VPinFE.app"]
+    postflight_steps do
+      run "xattr", args: ["-d", "com.apple.quarantine", "{{appdir}}/VPinFE.app"]
     end
   end
   on_linux do

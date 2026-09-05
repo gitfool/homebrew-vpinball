@@ -13,8 +13,8 @@ cask "vpx-editor" do
 
     app "VPX Editor.app"
 
-    postflight do
-      system_command "xattr", args: ["-d", "com.apple.quarantine", "#{appdir}/VPX Editor.app"]
+    postflight_steps do
+      run "xattr", args: ["-d", "com.apple.quarantine", "{{appdir}}/VPX Editor.app"]
     end
   end
   on_linux do

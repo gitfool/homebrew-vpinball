@@ -9,8 +9,8 @@ cask "vpxtool" do
          x86_64_linux: "3b33002e72568a009fbca863dd09be2d52d40b2a9f47304ff8361c1cd1441755"
 
   on_macos do
-    postflight do
-      system_command "xattr", args: ["-d", "com.apple.quarantine", "#{HOMEBREW_PREFIX}/bin/vpxtool"]
+    postflight_steps do
+      run "xattr", args: ["-d", "com.apple.quarantine", "{{HOMEBREW_PREFIX}}/bin/vpxtool"]
     end
   end
 
