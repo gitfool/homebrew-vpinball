@@ -3,9 +3,9 @@ cask "vpx-editor" do
   os macos: "macos", linux: "linux"
   ext = on_system_conditional macos: "dmg", linux: "zip"
 
-  version "0.9.1-146-805e6c6"
-  sha256 arm:          "decf950862acdea080da22d341d301caf2ef71749cedcbc98efa026c6ea502f7",
-         x86_64_linux: "62e16d050f26a0e88d7d09003f910058d2c2dc6e43aaea1c3b69e5e8e7622b4a"
+  version "0.9.2-147-4f91f53"
+  sha256 arm:          "a3a525ffb1ad4182a541bf3bd4e8d5564ee28daf2684b220bea479c3b8068f90",
+         x86_64_linux: "15771c9359a44ec754ab959519dda70482af33165019716e1b8c7301a3a98ef8"
 
   on_macos do
     depends_on arch: :arm64
