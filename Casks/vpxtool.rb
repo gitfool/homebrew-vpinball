@@ -2,11 +2,11 @@ cask "vpxtool" do
   arch arm: "aarch64", intel: "x86_64"
   os macos: "macos", linux: "linux"
 
-  version "0.34.6"
-  sha256 arm:          "68fde3b52729c01ae42f6783590a1b370a59830439337ab1d40e3962b3888a8c",
-         intel:        "b32860b0ca3aaa96917c0f3e8e7c2e5a176ab8e5f30a16d19d79207332524e62",
-         arm64_linux:  "6347b43b5e80f4f5b14fb781c352daf2763ebd71315f0f177699ea0d099d04e8",
-         x86_64_linux: "6500c27ad8755841ac2ed13b86b4f3e89e4069a957047c91ab638ab7f2cf9317"
+  version "0.34.7"
+  sha256 arm:          "4afb3027810a3e1b9b2723b9b9a0de7b94cae07ff881809e19904515c50265fa",
+         intel:        "51c3730a6a5a93d9465b966b9959cfcb4500f87b7710224ebfeb19263bd7e31e",
+         arm64_linux:  "a5d69b0062eef0aa99525ede217114a9485490695f7515262506c3d6f16de5bc",
+         x86_64_linux: "b88b8af786a969f8e38255aeb075616bbded0f94753e8135e35aee6bbb0ab36d"
 
   on_macos do
     postflight_steps do
