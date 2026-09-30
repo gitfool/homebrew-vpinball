@@ -33,8 +33,20 @@ cask "vpinball-nightly" do
   homepage "https://github.com/vpinball/vpinball"
 
   livecheck do
-    url "https://nightly.link/vpinball/vpinball/workflows/vpinball/master?preview"
-    regex(/VPinballX_BGFX-(.+?)-#{os}-#{arch}-Release\.#{ext}"/)
+    # Get unfiltered runs; branch/event/status filters intermittently return stale partial results
+    url "https://api.github.com/repos/vpinball/vpinball/actions/workflows/vpinball.yml/runs?per_page=10",
+        header: ["Authorization: token #{GitHub::API.credentials}", "Accept: application/vnd.github+json"]
+    regex(/^VPinballX_BGFX-(.+?)-#{os}-#{arch}-Release\.#{ext}$/)
+    strategy :json do |json, regex|
+      json["workflow_runs"]
+        .select { |run| run["head_branch"] == "master" && run["event"] == "push" && run["conclusion"] == "success" }
+        .sort_by { |run| -run["run_number"] }
+        .lazy
+        .map { |run| GitHub::API.open_rest("#{run["artifacts_url"]}?per_page=100")["artifacts"] }
+        .map { |artifacts| artifacts.reject { |artifact| artifact["expired"] } }
+        .map { |artifacts| artifacts.filter_map { |artifact| artifact["name"][regex, 1] } }
+        .find(&:any?) || []
+    end
   end
 
   zap trash: [

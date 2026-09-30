@@ -17,19 +17,24 @@ TAP="${GITHUB_REPOSITORY/homebrew-/}"
 echo -e "Tapping ${TAP}"
 brew tap ${TAP}
 
-# Bump a nightly cask that uses GitHub Actions artifacts as its download source.
-# Usage: bump_nightly <cask-name> <new-version> <repo> <artifact-template>
+# Bump the vpinball-nightly cask, which uses GitHub Actions artifacts as its download source.
+# Usage: bump_vpinball_nightly <cask-name> <new-version> <repo> <workflow> <branch> <artifact-template>
+#
+# The version must end with the short head sha of the workflow run that built it,
+# e.g. "10.8.1-5953-5ce3a3660". Artifact ids are taken from that run only.
 #
 # The artifact template uses placeholders: {version}, {arch}, {os}, {ext}
 # e.g. "VPinballX_BGFX-{version}-{os}-{arch}-Release.{ext}"
 #
 # The {arch}, {os}, and {ext} values are read from the cask's own stanzas,
 # so they match exactly what the cask interpolates into its URL.
-bump_nightly() {
+bump_vpinball_nightly() {
     local name="$1"
     local latest="$2"
     local repo="$3"
-    local template="$4"
+    local workflow="$4"
+    local branch="$5"
+    local template="$6"
     local path
     path="$(brew edit --cask "$name" --print-path)"
 
@@ -54,6 +59,38 @@ bump_nightly() {
         keys+=("$key")
     done < <(gsed -n '/^  sha256/,/^$/{ s/.*\b\(arm\|intel\|arm64_linux\|x86_64_linux\):.*/\1/p }' "$path")
 
+    # Find the run that built this version from its short head sha suffix.
+    # List runs unfiltered: branch/event/status filters intermittently return stale partial results.
+    local sha_short="${latest##*-}"
+    if ! [[ "$sha_short" =~ ^[0-9a-f]{7,40}$ ]]; then
+        echo -e "${RED}  Version has no short sha suffix: ${latest}${RESET}"
+        return 1
+    fi
+
+    local runs run_id
+    echo -e "  Fetching runs: ${repo} ${workflow}"
+    if ! runs=$(gh api "repos/${repo}/actions/workflows/${workflow}/runs?per_page=10"); then
+        echo -e "${RED}  Runs fetch failed: ${repo} ${workflow}${RESET}"
+        return 1
+    fi
+    run_id=$(jq -r --arg branch "$branch" --arg sha "$sha_short" '
+        [.workflow_runs[]
+            | select(.head_branch == $branch and .event == "push" and .conclusion == "success")
+            | select(.head_sha | startswith($sha))]
+        | max_by(.run_number) | .id // empty' <<<"$runs")
+
+    if [ -z "$run_id" ]; then
+        echo -e "${RED}  Run not found for ${latest} (${branch} push, sha ${sha_short})${RESET}"
+        return 1
+    fi
+
+    local artifacts
+    echo -e "  Fetching artifacts: run ${run_id}"
+    if ! artifacts=$(gh api "repos/${repo}/actions/runs/${run_id}/artifacts?per_page=100"); then
+        echo -e "${RED}  Artifacts fetch failed: run ${run_id}${RESET}"
+        return 1
+    fi
+
     declare -A shas=()
     declare -A ids=()
 
@@ -73,12 +110,12 @@ bump_nightly() {
         artifact_name="${artifact_name//\{arch\}/$arch}"
         artifact_name="${artifact_name//\{ext\}/$ext}"
 
-        echo -e "  Fetching artifact: ${artifact_name}"
-        artifact_id=$(gh api "repos/${repo}/actions/artifacts?name=${artifact_name}&per_page=1" \
-            --jq '.artifacts[0].id // empty')
+        echo -e "  Finding artifact: ${artifact_name}"
+        artifact_id=$(jq -r --arg name "$artifact_name" \
+            'first(.artifacts[] | select(.name == $name and (.expired | not)) | .id) // empty' <<<"$artifacts")
 
         if [ -z "$artifact_id" ]; then
-            echo -e "${RED}  Artifact not found: ${artifact_name}${RESET}"
+            echo -e "${RED}  Artifact not found in run ${run_id}: ${artifact_name}${RESET}"
             return 1
         fi
 
@@ -161,10 +198,10 @@ jq --compact-output '.[]' <<<"$items" | while IFS= read -r item; do
 
     echo -e "${BLUE}Bumping ${name} from ${current} to ${latest}...${RESET}"
 
-    # Special handling for nightly casks: download artifacts via GitHub API
+    # Special handling for vpinball-nightly: download artifacts via GitHub API
     if [ "$name" == "vpinball-nightly" ]; then
-        if ! bump_nightly "$name" "$latest" "vpinball/vpinball" "VPinballX_BGFX-{version}-{os}-{arch}-Release.{ext}"; then
-            echo -e "${RED}${name}: bump_nightly failed${RESET}"
+        if ! bump_vpinball_nightly "$name" "$latest" "vpinball/vpinball" "vpinball.yml" "master" "VPinballX_BGFX-{version}-{os}-{arch}-Release.{ext}"; then
+            echo -e "${RED}${name}: bump_vpinball_nightly failed${RESET}"
         fi
         continue
     fi
