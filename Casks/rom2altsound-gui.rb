@@ -1,5 +1,4 @@
 cask "rom2altsound-gui" do
-  arch arm: (OS.mac? ? "arm64" : "aarch64"), intel: "x86_64"
   os macos: "macos", linux: "linux"
   ext = on_system_conditional macos: "zip", linux: "tar.gz"
 
@@ -10,6 +9,8 @@ cask "rom2altsound-gui" do
          x86_64_linux: "30ed93dc59dc9eced5599b7775a5fc40f0e4c5862e1f082390a7d93d01de83e8"
 
   on_macos do
+    arch arm: "arm64", intel: "x86_64"
+
     app "rom2altsound.app"
     binary "#{appdir}/rom2altsound.app/Contents/MacOS/rom2altsound-gui", target: "rom2altsound-gui"
 
@@ -18,6 +19,8 @@ cask "rom2altsound-gui" do
     end
   end
   on_linux do
+    arch arm: "aarch64", intel: "x86_64"
+
     binary "rom2altsound-gui"
   end
 

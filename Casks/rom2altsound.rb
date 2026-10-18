@@ -1,5 +1,4 @@
 cask "rom2altsound" do
-  arch arm: (OS.mac? ? "arm64" : "aarch64"), intel: "x86_64"
   os macos: "macos", linux: "linux"
   ext = on_system_conditional macos: "tar.gz", linux: "tar.gz"
 
@@ -10,9 +9,14 @@ cask "rom2altsound" do
          x86_64_linux: "d327f81dfdfcddc991f57edf99294fb02654d18e8ec55c228d0ac706d6ca7b02"
 
   on_macos do
+    arch arm: "arm64", intel: "x86_64"
+
     postflight_steps do
       run "xattr", args: ["-d", "com.apple.quarantine", "{{HOMEBREW_PREFIX}}/bin/rom2altsound"]
     end
+  end
+  on_linux do
+    arch arm: "aarch64", intel: "x86_64"
   end
 
   url "https://github.com/Le-Syl21/rom2altsound/releases/download/v#{version}/rom2altsound-#{os}-#{arch}.#{ext}"
