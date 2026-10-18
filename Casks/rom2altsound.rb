@@ -2,11 +2,11 @@ cask "rom2altsound" do
   os macos: "macos", linux: "linux"
   ext = on_system_conditional macos: "tar.gz", linux: "tar.gz"
 
-  version "0.2.6"
-  sha256 arm:          "58287e44d1bd1885089ac4fc49313ad96908f4366d24c6b2c2abc2b52b13cb11",
-         intel:        "a6aea32cfa069a4a8339950b5c762d4125ce1a2ebd5f6f0b5b25e67c3a73b02d",
-         arm64_linux:  "3161f2a3e23612d07e67eacf3f426c68a2ee59db730b834fb5156d7731d48128",
-         x86_64_linux: "d327f81dfdfcddc991f57edf99294fb02654d18e8ec55c228d0ac706d6ca7b02"
+  version "0.4.0"
+  sha256 arm:          "86e6a2dbd20418fcc193b4c8bb65a477c8146e2b4ec6835dce706415dd7dd9f0",
+         intel:        "3e99b50b6f14bd64964f5258db763fb79b035575c22524534844b02cf2b30715",
+         arm64_linux:  "39f7e8afc0026b4fac7cb8829617e252c3f15df30d4d65327823810754e023b7",
+         x86_64_linux: "80913cd79892f67a8a05567c04626ad2427307ab6d5aa786c159c12fbc0c4fc0"
 
   on_macos do
     arch arm: "arm64", intel: "x86_64"
