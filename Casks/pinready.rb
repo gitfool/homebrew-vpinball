@@ -2,11 +2,11 @@ cask "pinready" do
   arch arm: "aarch64", intel: "x86_64"
   os macos: "macos", linux: "linux"
 
-  version "0.22.6"
-  sha256 arm:          "89c7bec8a3ed4b74322bfe9dcb27ec94a44fb4af2f84f108be6af4ba49dc7278",
-         intel:        "c0ff6459458c2fd342b43d5c4adf0db2b08d194b815ef9252536448493902f6d",
-         arm64_linux:  "d340be89ca548518ea2ad25590163c5556465a57d53733c2b563f7d49721c552",
-         x86_64_linux: "a1dd613d0307bf232bfd4329d5a913e91b36de2ff860310e419251f911bcca5e"
+  version "0.23.1"
+  sha256 arm:          "abb59b3c4cd1290b69db0fbcdec9c6df8c0ddc2832a095dd315e5b5a181affbc",
+         intel:        "a1ecaf121a52c62e80640a8ca1300eb9111d12349d53a52969224734643c00fe",
+         arm64_linux:  "ded92580bdeab3669b37c576f8e52f718c888fe6a4b3b5747da0ba7ce4ad73bb",
+         x86_64_linux: "b6333dd1c7f1a80de770ef8fd76cf4d0cc27641dbe531b01cec445b0d6990bb3"
 
   on_macos do
     postflight_steps do
