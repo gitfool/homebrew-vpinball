@@ -2,13 +2,13 @@ cask "vpinball-nightly" do
   arch arm: "arm64", intel: "x64"
   os macos: "macos", linux: "linux"
   ext = on_system_conditional macos: "dmg", linux: "tar.gz"
-  artifact_id = on_system_conditional macos: on_arch_conditional(arm: "14766898837", intel: "14766812407"),
-                                      linux: "14766706637"
+  artifact_id = on_system_conditional macos: on_arch_conditional(arm: "14774329275", intel: "14775016373"),
+                                      linux: "14774857217"
 
-  version "10.9.0-6968-a5bf7ba70"
-  sha256 arm:          "971a5ea202a50cb1e931ac406278ab811d6c37ddfe1d7adaea79a6fea13fdeaf",
-         intel:        "70f5a6496ef9ca8a20b30ae8246d93faf004ec4ac8accfb1ac9215197ad283cd",
-         x86_64_linux: "aed3da9073b61844a3f75ee4d16a8eb9792f28391e8172cc1665e850d7690c80"
+  version "10.9.0-6969-0339b4de0"
+  sha256 arm:          "8c190e435567b95b42ceb29fd3e20ad269b6ad36eac9075a09c37fb30e4995e4",
+         intel:        "6f1682c74d3167f7dca0eda71f344fe052e0b0ea57feae623a640a18159274d0",
+         x86_64_linux: "b0a26fa5e34a2cfd6a73a0166439ba0fe1dd0a57bb3f40663c27e75740c9404c"
 
   on_macos do
     depends_on macos: :sonoma
