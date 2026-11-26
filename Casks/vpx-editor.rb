@@ -4,6 +4,7 @@ cask "vpx-editor" do
   ext = on_system_conditional macos: "dmg", linux: "zip"
 
   version "0.9.3-167-4b1b1c4"
+  tag = version.split("-").first
   sha256 arm:          "229eaced1c223e10277573f47469b23361e29fc719ae3694344f1ab5be7c2183",
          x86_64_linux: "55e53413fe5b4d7b752f052c4697f24ffdd3d645f7e41512a2a6aecb284a24b1"
 
@@ -23,7 +24,7 @@ cask "vpx-editor" do
     binary "VPX Editor-linux-x64/vpx-editor"
   end
 
-  url "https://github.com/jsm174/vpx-editor/releases/download/v#{version.split("-").first}/vpx-editor-#{os}-#{arch}-#{version}.#{ext}"
+  url "https://github.com/jsm174/vpx-editor/releases/download/v#{tag}/vpx-editor-#{os}-#{arch}-#{version}.#{ext}"
   name "VPX Editor"
   desc "Cross-platform Visual Pinball table editor using Electron and vpin"
   homepage "https://github.com/jsm174/vpx-editor"
