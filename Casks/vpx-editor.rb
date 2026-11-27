@@ -3,10 +3,10 @@ cask "vpx-editor" do
   os macos: "macos", linux: "linux"
   ext = on_system_conditional macos: "dmg", linux: "zip"
 
-  version "0.9.3-167-4b1b1c4"
+  version "0.9.4-168-ec1d042"
   tag = version.split("-").first
-  sha256 arm:          "229eaced1c223e10277573f47469b23361e29fc719ae3694344f1ab5be7c2183",
-         x86_64_linux: "55e53413fe5b4d7b752f052c4697f24ffdd3d645f7e41512a2a6aecb284a24b1"
+  sha256 arm:          "c6620f0372ce3cb3d17f7c2993a064f6d85e97e47e1abb95839679080d68f648",
+         x86_64_linux: "9aa75e2d02fd363e583fa5bc6700e1fb68742311797b2d740dd8851566e35c80"
 
   on_macos do
     depends_on arch: :arm64
